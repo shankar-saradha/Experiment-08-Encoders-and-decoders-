@@ -1,10 +1,10 @@
 # Experiment-08- Encoders-and-decoders 
-### AIM: To implement 8 to 3 Encoder and  3to8 Decoder using verilog and validate its outputs
-### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
-### SOFTWARE REQUIRED:   Quartus prime
-### THEORY 
+## AIM: To implement 8 to 3 Encoder and  3to8 Decoder using verilog and validate its outputs
+## HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
+## SOFTWARE REQUIRED:   Quartus prime
+## THEORY 
 
-## Encoders
+### Encoders
 Binary code of N digits can be used to store 2N distinct elements of coded information. This is what encoders and decoders are used for. Encoders convert 2N lines of input into a code of N bits and Decoders decode the N bits into 2N lines.
 
 1. Encoders –
@@ -54,43 +54,82 @@ D7 = X Y Z
 ![image](https://user-images.githubusercontent.com/36288975/171543866-5a6eace6-8683-49d7-9c4f-a7cb30ec3035.png)
 ## Figure -04 8 to 3 Decoder implementation 
 
-### Procedure
-/* write all the steps invloved */
+## Procedure
+### Step 1:
+Open Quartus II and select new project and choose the file location.
 
+### Step 2:
+Module Declaration. Module should have the file name.
 
+### Step 3:
+Input-Output Delecaration.
 
-### PROGRAM 
-/*
-Program for Endocers and Decoders  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+### Step 4:
+Use assign to define the functionality of logic circuits.
+
+### Step 5:
+At the end give endmodule.
+
+### Step 6:
+Run the program and choose RTL viewer to get RTL realization.
+
+## PROGRAM 
+### Program for Endocers and Decoders  and verify its truth table in quartus using Verilog programming.
+### Developed by: Shankar S S
+### RegisterNumber: 212221240052
 */
+### ENCODER:
+```
+module Encoder(a,b,c,d0,d1,d2,d3,d4,d5,d6,d7);
+input d0,d1,d2,d3,d4,d5,d6,d7;
+output a,b,c;
+or(a,d4,d5,d6,d7);
+or(b,d2,d3,d6,d7);
+or(c,d1,d3,d5,d7);
+endmodule
+```
+### DECODER:
+```
+module Decoder(d0,d1,d2,d3,d4,d5,d6,d7,a,b,c);
+input a,b,c;
+output d0,d1,d2,d3,d4,d5,d6,d7;
+assign d0 = (~a&~b&~c);
+assign d1 = (~a&~b&c);
+assign d2 = (~a&b&~c);
+assign d3 = (~a&b&c);
+assign d4 = (a&~b&~c);
+assign d5 = (a&~b&c);
+assign d6 = (a&b&~c);
+assign d7 = (a&b&c);
+endmodule
+```
+
+### OUTPUT:
+
+### RTL LOGIC:  
+#### ENCODER:
+![image](https://github.com/Vineesh-AI-DS/Experiment-08-Encoders-and-decoders-/assets/93427254/ae0ffa17-69fd-4441-b802-fe1458096a30)
+
+#### DECODER:
+![image](https://github.com/Vineesh-AI-DS/Experiment-08-Encoders-and-decoders-/assets/93427254/612b9e87-c1d8-4e1e-8e4f-72e73b0591b8)
 
 
+### TIMING DIGRAMS:
+#### ENCODER:
+![image](https://github.com/Vineesh-AI-DS/Experiment-08-Encoders-and-decoders-/assets/93427254/481872de-6556-4c61-81f0-853d9d7b01d8)
+
+#### DECODER:
+![image](https://github.com/Vineesh-AI-DS/Experiment-08-Encoders-and-decoders-/assets/93427254/a250a9b9-409f-4fd4-be21-4841d12a2045)
 
 
+### TRUTH TABLE: 
+#### ENCODER:
+![image](https://github.com/Vineesh-AI-DS/Experiment-08-Encoders-and-decoders-/assets/93427254/51cbaae4-b14b-49ca-a297-4d1686c13853)
 
 
-### RTL LOGIC  
+#### DECODER:
+![image](https://github.com/Vineesh-AI-DS/Experiment-08-Encoders-and-decoders-/assets/93427254/87bc2006-463a-4a5c-8732-0d2c056c6adb)
 
 
-
-
-
-
-
-
-### TIMING DIGRAMS  
-
-
-
-
-
-### TRUTH TABLE 
-
-
-
-
-
-
-### RESULTS 
+## RESULT: 
+Thus, 8 to 3 Encoder and 3 to 8 Decoder is implemented using verilog and its outputs is validated.
